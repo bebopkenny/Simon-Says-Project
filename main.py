@@ -47,6 +47,12 @@ def cpu_turn():
     cpu_sequence.append(choice) # update cpu sequence
     if choice == "green":
         green.update(SCREEN)
+    elif choice == "red":
+        red.update(SCREEN)
+    elif choice == "blue":
+        blue.update(SCREEN)
+    else:
+        yellow.update(SCREEN)
     # Check other three color options
 
 '''
@@ -78,7 +84,7 @@ def player_turn():
         for event in pygame.event.get():
             if event.type == pygame.MOUSEBUTTONUP and event.button == 1: # button click occured
                 # Grab the current position of mouse here
-                pos =
+                pos = pygame.mouse.get_pos() # Returns the x and y position of the mouse cursor
                 if green.selected(pos): # green button was selected
                     green.update(SCREEN) # illuminate button
                     players_sequence.append("green") # add to player sequence
