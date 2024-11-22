@@ -46,12 +46,13 @@ score = 0
 '''
 Draw timer
 '''
-def timer():
-    starting_time = int((pygame.time.get_ticks() / 1000 - start_time))
-    timer_surface = font.render(f"Timer: {starting_time}", False, 'White')
-    timer_rect = timer_surface.get_rect(midtop=(250, 150))
-    SCREEN.blit(timer_surface, timer_rect)
-    return starting_time
+def display_score():
+    font_time = pygame.font.Font('fonts/PressStart2P-Regular.ttf', 10)
+    current_time = round((pygame.time.get_ticks() / 1000 - start_time))
+    score_surface = font_time.render(f"Time:{current_time}", False, 'White')
+    score_rect = score_surface.get_rect(center = (250, 245))
+    SCREEN.blit(score_surface, score_rect)
+    return current_time
 
 '''
 Draws game board
@@ -236,7 +237,7 @@ while True:
 
         # Clear the screen and run the game
         SCREEN.fill('Black')
-        timer()  # Display the timer
+        display_score()  # Display the timer
         draw_board()  # Draw the game board
         repeat_cpu_sequence()  # Show the CPU's sequence
         cpu_turn()  # CPU picks a new color
